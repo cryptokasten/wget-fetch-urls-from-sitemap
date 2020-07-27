@@ -1,0 +1,10 @@
+#+TITLE: Wget: Fetch urls from sitemap
+#+PROPERTY: header-args:sh :session *shell wget-fetch-urls-from-sitemap sh* :results silent raw
+
+#+BEGIN_SRC sh
+SITEMAP_URL="https://site.com/sitemap.xml"
+#+END_SRC
+
+#+BEGIN_SRC sh
+curl $SITEMAP_URL 2> /dev/null | grep loc | cut -d'>' -f2 | cut -d'<' -f1 | wget --wait 0.25 --random-wait -i -
+#+END_SRC
